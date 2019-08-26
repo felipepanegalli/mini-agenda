@@ -1,0 +1,30 @@
+{% extends "../template/page.html" %}
+{% block content %}
+
+    <h2>Cadastrar Evento</h2>
+    <br>
+    <br>
+    <form action="add/" method="post">
+        {% csrf_token %}
+        <label for="titulo">Título</label>
+        <br>
+        <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+        <input type="text" name="titulo" size="28" value="{{ evento.titulo }}" required>
+        <br><br>
+        <label for="data_evento">Data do evento</label>
+        <br>
+        <input type="datetime-local" name="data_evento" value="{{ evento.get_data_evento_eng }}" required>
+        <br><br>
+        <label for="descricao">Descrição</label>
+        <br>
+        <textarea name="descricao" cols="26" rows="10">{{ evento.descricao }}</textarea>
+        <br>
+        <br>
+        <a href="/agenda">
+            <button type="button">Cancelar</button>
+        </a>
+        <button type="submit">Salvar</button>
+    </form>
+
+
+{% endblock %}

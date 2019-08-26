@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<form action="authenticate" method="post">
+    <div align="center">
+        {% csrf_token %}
+        <label for="username">Usuário</label>
+        <input type="text" name="username" placeholder="Digite o usuário...">
+        <label for="password">Senha</label>
+        <input type="password" name="password" placeholder="Digite sua senha...">
+        <button type="submit">Entrar</button>
+    </div>
+</form>
+
+{% for message in messages %}
+    <div align="center" style="padding-top: 50px">
+        <strong>Erro</strong>
+        <br>
+        {{ message }}
+    </div>
+{% endfor %}
+
+</body>
+</html>
