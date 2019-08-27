@@ -1,33 +1,35 @@
 {% extends "../template/page.html" %}
 {% block content %}
 
+    <div class="columns">
+        <div class="column is-10 is-offset-1">
+            <h1 class="title">Evento</h1>
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th>Data do evento</th>
+                    <th align="right">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for evento in eventos %}
+                    <tr>
+                        <td>{{ evento.id }}</td>
+                        <td>{{ evento.titulo }}</td>
+                        <td>{{ evento.get_data_evento }}</td>
+                        <td align="right">
+                            <a href="evento/?id={{ evento.id }}" class="button is-warning">Editar</a>
+                            <a href="evento/delete/{{ evento.id }}" class="button is-danger">Excluir</a>
+                        </td>
 
-    <br><h4 class="title is-4">Agendamentos</h4>
-    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Título</th>
-            <th>Data do evento</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for evento in eventos %}
-            <tr>
-                <td>{{ evento.id }}</td>
-                <td>{{ evento.titulo }}</td>
-                <td>{{ evento.get_data_evento }}</td>
-                <td>
-                    <a href="evento/?id={{ evento.id }}" class="button is-warning">Editar</a>
-                    <a href="evento/delete/{{ evento.id }}" class="button is-danger">Excluir</a>
-                </td>
-
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <br>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     {% for message in messages %}
         <div align="center" style="padding-top: 50px">

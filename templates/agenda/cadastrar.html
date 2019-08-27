@@ -1,30 +1,43 @@
 {% extends "../template/page.html" %}
 {% block content %}
 
-    <h2>Cadastrar Evento</h2>
-    <br>
-    <br>
-    <form action="add/" method="post">
-        {% csrf_token %}
-        <label for="titulo">Título</label>
-        <br>
-        <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
-        <input type="text" name="titulo" size="28" value="{{ evento.titulo }}" required>
-        <br><br>
-        <label for="data_evento">Data do evento</label>
-        <br>
-        <input type="datetime-local" name="data_evento" value="{{ evento.get_data_evento_eng }}" required>
-        <br><br>
-        <label for="descricao">Descrição</label>
-        <br>
-        <textarea name="descricao" cols="26" rows="10">{{ evento.descricao }}</textarea>
-        <br>
-        <br>
-        <a href="/agenda">
-            <button type="button">Cancelar</button>
-        </a>
-        <button type="submit">Salvar</button>
-    </form>
+    <div class="columns">
+        <div class="column is-10 is-offset-1">
+            <h1 class="title">Cadastrar Evento</h1>
+            <form action="add/" method="post">
+                {% csrf_token %}
+                <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+
+                <div class="field">
+                    <label class="label" for="titulo">Título</label>
+                    <div class="control">
+                        <input class="input" name="titulo" value="{{ evento.titulo }}" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="data_evento">Data do evento</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" name="data_evento"
+                               value="{{ evento.get_data_evento_eng }}"
+                               required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="descricao">Descrição</label>
+                    <div class="control">
+                        <textarea class="textarea" name="descricao">{{ evento.descricao }}</textarea>
+                    </div>
+                </div>
+
+                <a href="/agenda">
+                    <button type="button" class="button is-danger">Cancelar</button>
+                </a>
+                <button type="submit" class="button is-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
 
 
 {% endblock %}
